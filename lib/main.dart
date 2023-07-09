@@ -5,14 +5,16 @@
 import 'package:firebase_auth/firebase_auth.dart'
     hide PhoneAuthProvider, EmailAuthProvider;
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_ui_auth/firebase_ui_auth.dart';
+import 'package:firebase_ui_auth/firebase_ui_auth.dart' hide ProfileScreen;
 import 'package:firebase_ui_localizations/firebase_ui_localizations.dart';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:intl/date_symbol_data_local.dart';
+import 'package:table_calendar/table_calendar.dart';
 
-
+import 'screen/profile_screen.dart';
 import 'decorations.dart';
 import 'firebase_options.dart';
 
@@ -120,25 +122,13 @@ class FirebaseAuthUIExample extends StatelessWidget {
                       Navigator.pushNamed(context, '/phone');
                     }),
                     AuthStateChangeAction<SignedIn>((context, state) {
-                      if (!state.user!.emailVerified) {
-                        Navigator.pushNamed(context, '/verify-email');
-                      } else {
                         Navigator.pushReplacementNamed(context, '/profile');
-                      }
                     }),
                     AuthStateChangeAction<UserCreated>((context, state) {
-                      if (!state.credential.user!.emailVerified) {
-                        Navigator.pushNamed(context, '/verify-email');
-                      } else {
-                        Navigator.pushReplacementNamed(context, '/profile');
-                      }
+                      Navigator.pushReplacementNamed(context, '/profile');
                     }),
                     AuthStateChangeAction<CredentialLinked>((context, state) {
-                      if (!state.user.emailVerified) {
-                        Navigator.pushNamed(context, '/verify-email');
-                      } else {
-                        Navigator.pushReplacementNamed(context, '/profile');
-                      }
+                      Navigator.pushReplacementNamed(context, '/profile');
                     }),
                     mfaAction,
                     EmailLinkSignInAction((context) {
@@ -249,22 +239,9 @@ class FirebaseAuthUIExample extends StatelessWidget {
                 );
               },
               '/profile': (context) {
-                final platform = Theme
-                    .of(context)
-                    .platform;
 
-                return ProfileScreen(
-                  actions: [
-                    SignedOutAction((context) {
-                      Navigator.pushReplacementNamed(context, '/');
-                    }),
-                    mfaAction,
-                  ],
-                  actionCodeSettings: actionCodeSettings,
-                  showMFATile: kIsWeb ||
-                      platform == TargetPlatform.iOS ||
-                      platform == TargetPlatform.android,
-                );
+
+                return ProfileScreen();
               },
             },
             title: 'Firebase UI demo',
