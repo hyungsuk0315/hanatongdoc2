@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "272833201448",
+    "project_id": "hanatongdoc2",
+    "storage_bucket": "hanatongdoc2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:272833201448:android:bf20dc1c280c058887bc1d",
+        "android_client_info": {
+          "package_name": "com.example.hana_tongdoc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "272833201448-3s2hpse3ktprd6u3h55stoshc268bm38.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAz4Ofp5seRq6Ez3aCYoCDWycd4joaMNlw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "272833201448-3s2hpse3ktprd6u3h55stoshc268bm38.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "272833201448-0v4mfqj5fn0frc5jv6pditi2pem9vtbo.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.hanaTongdoc"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:272833201448:android:09ff98a144d9446187bc1d",
+        "android_client_info": {
+          "package_name": "com.example.hanatongdoc2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "272833201448-3s2hpse3ktprd6u3h55stoshc268bm38.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAz4Ofp5seRq6Ez3aCYoCDWycd4joaMNlw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "272833201448-3s2hpse3ktprd6u3h55stoshc268bm38.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "272833201448-0v4mfqj5fn0frc5jv6pditi2pem9vtbo.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.hanaTongdoc"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
