@@ -5,13 +5,11 @@ class LalabAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      child: AppBar(
+    return AppBar(
         title: Text('하나 통독'),
         leading: ImageIcon(
             AssetImage('images/lalab_logo.png')
         ),
-      ),
-    );
+      );
   }
 }
