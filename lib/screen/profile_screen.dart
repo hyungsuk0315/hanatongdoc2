@@ -6,6 +6,7 @@ import 'package:table_calendar/table_calendar.dart';
 import '../src/widget_appBar.dart';
 import '../utils.dart';
 
+
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
@@ -38,10 +39,15 @@ class Calendar extends StatefulWidget {
 }
 
 class _CalendarState extends State<Calendar> {
+
   final ValueNotifier<List<Event>> _selectedEvents = ValueNotifier([]);
 
   // Using a `LinkedHashSet` is recommended due to equality comparison override
   final Set<DateTime> _selectedDays = LinkedHashSet<DateTime>(
+    equals: isSameDay,
+    hashCode: getHashCode,
+  );
+  final Set<DateTime> _focusedDays = LinkedHashSet<DateTime>(
     equals: isSameDay,
     hashCode: getHashCode,
   );
@@ -53,13 +59,11 @@ class _CalendarState extends State<Calendar> {
   void _onDaySelected(DateTime selectedDay, DateTime focusedDay) {
     setState(() {
       _focusedDay = focusedDay;
-      _selectedDays.contains(_focusedDay);
+      _selectedDays.clear();
+      _selectedDays.addAll(_focusedDays);
       // Update values in a Set
-      // if (_selectedDays.contains(selectedDay)) {
-      //   _selectedDays.remove(selectedDay);
-      // } else {
-      //   _selectedDays.add(selectedDay);
-      // }
+      _selectedDays.add(selectedDay);
+
     });
 
   }
@@ -74,10 +78,10 @@ class _CalendarState extends State<Calendar> {
             child: Text('읽음'),
             onPressed: () {
               setState(() {
-                if(!_selectedDays.contains(_focusedDay))
-                  _selectedDays.add(_focusedDay);
+                if(!_focusedDays.contains(_focusedDay))
+                  _focusedDays.add(_focusedDay);
                 else
-                  _selectedDays.remove(_focusedDay);
+                  _focusedDays.remove(_focusedDay);
               });
             },
           ),
@@ -104,6 +108,13 @@ class _CalendarState extends State<Calendar> {
             },
             onPageChanged: (focusedDay) {
               _focusedDay = focusedDay;
+            },
+          ),
+          const SizedBox(height: 8.0),
+          ElevatedButton(
+            child: Text('읽으러가기'),
+            onPressed: () {
+              Navigator.pushReplacementNamed(context, '/books');
             },
           ),
         ],

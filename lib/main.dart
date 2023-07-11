@@ -11,10 +11,12 @@ import 'package:firebase_ui_localizations/firebase_ui_localizations.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:hanatongdoc2/screen/books_screen.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import 'screen/profile_screen.dart';
+import 'screen/books_screen.dart';
 import 'decorations.dart';
 import 'firebase_options.dart';
 
@@ -239,9 +241,10 @@ class FirebaseAuthUIExample extends StatelessWidget {
                 );
               },
               '/profile': (context) {
-
-
                 return ProfileScreen();
+              },
+              '/books': (context) {
+                return BooksScreen();
               },
             },
             title: 'Firebase UI demo',
