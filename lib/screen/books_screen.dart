@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import '../widget/show_book.dart';
 class BooksScreen extends StatefulWidget {
   const BooksScreen({super.key});
 
@@ -18,27 +18,12 @@ class _BooksScreenState extends State<BooksScreen> {
                   AssetImage('images/lalab_logo.png')
               ),
           ),
-          bottomNavigationBar: Material(
-            child:TabBar( tabs: [
-              Container(
-                height: 80,
-                alignment: Alignment.center,
-                child: Text(
-                  'Tab1',
-                ),
-              ),
-              Container(
-                height: 80,
-                alignment: Alignment.center,
-                child: Text(
-                  'Tab2',
-                ),
-              ),
+          body: const Column(
+            children: [
+              ShowBook(),
             ],
-
-            )
           ),
-        )
-    );
+          ),
+        );
   }
 }

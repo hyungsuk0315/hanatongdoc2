@@ -2,13 +2,15 @@ import 'dart:collection';
 
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:provider/provider.dart';
 import 'package:table_calendar/table_calendar.dart';
-import '../src/widget_appBar.dart';
 import '../utils.dart';
-
+import 'books_screen.dart';
+import '../provider/date_provider.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
+
 
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
@@ -57,13 +59,13 @@ class _CalendarState extends State<Calendar> {
 
 
   void _onDaySelected(DateTime selectedDay, DateTime focusedDay) {
+    context.read<DatePickup>().pick_date(selectedDay);
     setState(() {
       _focusedDay = focusedDay;
       _selectedDays.clear();
       _selectedDays.addAll(_focusedDays);
       // Update values in a Set
       _selectedDays.add(selectedDay);
-
     });
 
   }
@@ -114,7 +116,7 @@ class _CalendarState extends State<Calendar> {
           ElevatedButton(
             child: Text('읽으러가기'),
             onPressed: () {
-              Navigator.pushReplacementNamed(context, '/books');
+              Navigator.push(context, MaterialPageRoute(builder: (context) => BooksScreen()));
             },
           ),
         ],

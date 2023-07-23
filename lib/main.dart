@@ -14,6 +14,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hanatongdoc2/screen/books_screen.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:provider/provider.dart';
+import 'provider/date_provider.dart';
 
 import 'screen/profile_screen.dart';
 import 'screen/books_screen.dart';
@@ -39,8 +41,15 @@ Future<void> main() async {
     EmailAuthProvider(),
 
   ]);
-
-  runApp(const FirebaseAuthUIExample());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => DatePickup()),
+      ],
+      child: FirebaseAuthUIExample(),
+    ),
+  );
+  //runApp(const FirebaseAuthUIExample());
 }
 
 // Overrides a label for en locale
